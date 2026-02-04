@@ -15,29 +15,35 @@
 //     console.log(tabSemaine[0]  , tabMois[0]);
 //     console.log(maDateV1.jour, maDateV1.mois);
 
-let nbr1 = 3;
-let nbr2 = 7;
-let nbr3 = 8;
-let nbr4 = 21;
+// let nbr1 = 3;
+// let nbr2 = 7;
+// let nbr3 = 8;
+// let nbr4 = 21;
 
-let somme = nbr1 + nbr2;
-console.log(somme);
+// let somme = nbr1 + nbr2;
+// console.log(somme);
 
-let difference = nbr4 - nbr3;
-console.log(difference);
+// let difference = nbr4 - nbr3;
+// console.log(difference);
 
-let produit = nbr2 * nbr1;
-nbr2 = produit;
-console.log(nbr2);
+// let produit = nbr2 * nbr1;
+// nbr2 = produit;
+// console.log(nbr2);
 
-nbr2++;
-console.log(nbr2);
+// nbr2++;
+// console.log(nbr2);
 
-let quotient = nbr4 / nbr1;
-console.log(quotient);
+// let quotient = nbr4 / nbr1;
+// console.log(quotient);
 
-let reste = nbr4 % nbr1;
-console.log(reste);
+// let reste = nbr4 % nbr1;
+// console.log(reste);
+
+let nom_serie; 
+let nom_personnage;
+nom_serie = prompt("Quelle est ta série préférée ?");
+nom_personnage = prompt("Quel est ton personnage préféré dans cette série ?");
+console.log("Ma série préférée est " + nom_serie + " et mon personnage est " + nom_personnage);
 
 
 
