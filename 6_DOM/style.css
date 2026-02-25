@@ -116,10 +116,11 @@ input {
   cursor: pointer;
   transition: 0.3s;
   border-radius: 0;
+  
 }
 
 .addBtn:hover {
-  background-color: #bbb;
+  background-color: #484242;
 }
 
 .itemCheck{
