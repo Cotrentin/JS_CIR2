@@ -121,3 +121,8 @@ input {
 .addBtn:hover {
   background-color: #bbb;
 }
+
+.itemCheck{
+  background-color: lightblue !important;
+  text-decoration: line-through;
+}

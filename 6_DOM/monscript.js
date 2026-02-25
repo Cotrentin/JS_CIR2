@@ -4,8 +4,8 @@ let li = document.querySelector("#listeCourses li");
 
 /* Tous les évènements */
 li.addEventListener('click', ()=>{
-    li.style.textDecoration = "line-through";
-    li.style.backgroundColor = "lightblue";
+    li.classList.toggle("itemCheck");
+    
 })
 
 
