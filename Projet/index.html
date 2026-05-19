@@ -21,6 +21,28 @@
         </nav>
     </header>
     <main>
-        </main>
+        <section class="hero">
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="search" id="search-input" placeholder="Rechercher un film ou une série..." required>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <div class="section-header">
+                <h2>Tendances</h2>
+                <div class="toggle-buttons" id="trending-toggles">
+                    <button class="active" data-time="day">Aujourd'hui</button>
+                    <button data-time="week">Cette semaine</button>
+                </div>
+            </div>
+            <div id="error-message" class="error-hidden"></div>
+            <div class="grid-container" id="trending-results">
+                </div>
+        </section>
+    </main>
+        
 </body>
 </html>
