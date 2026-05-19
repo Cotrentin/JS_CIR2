@@ -14,7 +14,7 @@
                 <i class="fa-solid fa-film"></i>
             </div>
             <ul class="nav-links">
-                <li><a href="index.html">Films</a></li>
+                <li><a href="index.html" id="nav-movies">Films</a></li>
                 <li><a href="#" id="nav-series">Séries</a></li>
                 <li><a href="#" id="nav-popular">Populaires</a></li>
             </ul>
@@ -31,7 +31,7 @@
             </div>
         </section>
 
-        <section class="content-section">
+        <section class="content-section" id="movies-section">
             <div class="section-header">
                 <h2>Tendances</h2>
                 <div class="toggle-buttons" id="trending-toggles">
@@ -41,6 +41,19 @@
             </div>
             <div id="error-message" class="error-hidden"></div>
             <div class="grid-container" id="trending-results">
+            </div>
+        </section>
+
+        <section class="content-section" id="tv-section">
+            <div class="section-header">
+                <h2>Séries TV</h2>
+                <div class="toggle-buttons" id="tv-toggles">
+                    <button class="active" data-time="day">Aujourd'hui</button>
+                    <button data-time="week">Cette semaine</button>
+                </div>
+            </div>
+            <div id="tv-error-message" class="error-hidden"></div>
+            <div class="grid-container" id="tv-results">
             </div>
         </section>
 

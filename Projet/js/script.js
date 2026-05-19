@@ -19,12 +19,12 @@ class TMDBApi {
         return await this.fetchData(`/trending/movie/${timeWindow}?`);
     }
 
-    static async getPopularMovies() {
-        return await this.fetchData(`/movie/popular?`);
+    static async getTrendingTv(timeWindow = 'day') {
+        return await this.fetchData(`/trending/tv/${timeWindow}?`);
     }
 
-    static async getTvShows(type = 'popular') {
-        return await this.fetchData(`/tv/${type}?`);
+    static async getPopularMovies() {
+        return await this.fetchData(`/movie/popular?`);
     }
 
     static async searchMulti(query) {
@@ -162,30 +162,56 @@ class App {
     }
 
     static initNavbar() {
+        const navMovies = document.getElementById('nav-movies');
         const navSeries = document.getElementById('nav-series');
         const navPopular = document.getElementById('nav-popular');
 
+        if (navMovies) {
+            navMovies.addEventListener('click', (e) => {
+                if (!window.location.pathname.includes('new_page.html')) {
+                    e.preventDefault();
+                    document.getElementById('movies-section')?.scrollIntoView({ behavior: 'smooth' });
+                }
+            });
+        }
+
         if (navSeries) {
-            navSeries.addEventListener('click', async (e) => {
-                e.preventDefault();
-                await this.loadTvShows('popular', "Les Séries Populaires");
+            navSeries.addEventListener('click', (e) => {
+                if (!window.location.pathname.includes('new_page.html')) {
+                    e.preventDefault();
+                    document.getElementById('tv-section')?.scrollIntoView({ behavior: 'smooth' });
+                }
             });
         }
 
         if (navPopular) {
             navPopular.addEventListener('click', async (e) => {
                 e.preventDefault();
-                const data = await TMDBApi.getPopularMovies();
-                if (data && data.results) {
-                    this.showResultsSection("Les Films Populaires");
-                    UI.displayCards(data.results, 'search-results');
+                if (window.location.pathname.includes('new_page.html')) {
+                    window.location.href = 'index.html?section=popular';
+                } else {
+                    const data = await TMDBApi.getPopularMovies();
+                    if (data && data.results) {
+                        this.showResultsSection("Les Films Populaires");
+                        UI.displayCards(data.results, 'search-results');
+                    }
                 }
             });
         }
     }
 
     static async initHomePage() {
+        const params = new URLSearchParams(window.location.search);
+        if (params.get('section') === 'popular') {
+            const data = await TMDBApi.getPopularMovies();
+            if (data && data.results) {
+                this.showResultsSection("Les Films Populaires");
+                UI.displayCards(data.results, 'search-results');
+            }
+        }
+
         await this.loadTrending('day');
+        await this.loadTrendingTv('day');
 
         const trendingToggles = document.querySelectorAll('#trending-toggles button');
         trendingToggles.forEach(button => {
@@ -193,6 +219,15 @@ class App {
                 trendingToggles.forEach(btn => btn.classList.remove('active'));
                 e.target.classList.add('active');
                 await this.loadTrending(e.target.dataset.time);
+            });
+        });
+
+        const tvToggles = document.querySelectorAll('#tv-toggles button');
+        tvToggles.forEach(button => {
+            button.addEventListener('click', async (e) => {
+                tvToggles.forEach(btn => btn.classList.remove('active'));
+                e.target.classList.add('active');
+                await this.loadTrendingTv(e.target.dataset.time);
             });
         });
 
@@ -216,7 +251,8 @@ class App {
     }
 
     static showResultsSection(title) {
-        document.getElementById('trending-results').parentElement.style.display = 'none';
+        document.getElementById('movies-section').style.display = 'none';
+        document.getElementById('tv-section').style.display = 'none';
         
         const resultsSection = document.getElementById('results-section');
         const resultsTitle = document.getElementById('results-title');
@@ -233,19 +269,17 @@ class App {
         if (data && data.results) {
             UI.displayCards(data.results, 'trending-results');
         } else {
-            UI.showError("Oups, une erreur est survenue lors du chargement des tendances.", 'error-message');
+            UI.showError("Oups, une erreur est survenue lors du chargement des films.", 'error-message');
         }
     }
 
-    static async loadTvShows(type, title) {
-        const data = await TMDBApi.getTvShows(type);
+    static async loadTrendingTv(timeWindow) {
+        UI.hideError('tv-error-message');
+        const data = await TMDBApi.getTrendingTv(timeWindow);
         if (data && data.results) {
-            this.showResultsSection(title);
-            UI.hideError('search-error-message');
-            UI.displayCards(data.results, 'search-results');
+            UI.displayCards(data.results, 'tv-results');
         } else {
-            this.showResultsSection(title);
-            UI.showError("Oups, une erreur est survenue.", 'search-error-message');
+            UI.showError("Oups, une erreur est survenue lors du chargement des séries.", 'tv-error-message');
         }
     }
 
