@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDB - Accueil</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <i class="fa-solid fa-film"></i>
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html" id="nav-movies">Films</a></li>
+                <li><a href="#" id="nav-series">Séries</a></li>
+                <li><a href="#" id="nav-popular">Populaires</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="search-container">
+                <form id="search-form">
+                    <input type="search" id="search-input" placeholder="Rechercher un film ou une série..." required>
+                    <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
+            </div>
+        </section>
+
+        <section class="content-section" id="movies-section">
+            <div class="section-header">
+                <h2>Tendances</h2>
+                <div class="toggle-buttons" id="trending-toggles">
+                    <button class="active" data-time="day">Aujourd'hui</button>
+                    <button data-time="week">Cette semaine</button>
+                </div>
+            </div>
+            <div id="error-message" class="error-hidden"></div>
+            <div class="grid-container" id="trending-results">
+            </div>
+        </section>
+
+        <section class="content-section" id="tv-section">
+            <div class="section-header">
+                <h2>Séries TV</h2>
+                <div class="toggle-buttons" id="tv-toggles">
+                    <button class="active" data-time="day">Aujourd'hui</button>
+                    <button data-time="week">Cette semaine</button>
+                </div>
+            </div>
+            <div id="tv-error-message" class="error-hidden"></div>
+            <div class="grid-container" id="tv-results">
+            </div>
+        </section>
+
+        <section class="content-section" id="results-section" style="display:none;">
+            <div class="section-header">
+                <h2 id="results-title">Résultats de la recherche</h2>
+            </div>
+            <div id="search-error-message" class="error-hidden"></div>
+            <div class="grid-container" id="search-results">
+            </div>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
