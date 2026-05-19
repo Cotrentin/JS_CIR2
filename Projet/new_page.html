@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TMDB - Détails</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo"><a href="index.html"><i class="fa-solid fa-film"></i></a></div>
+            <ul class="nav-links">
+                <li><a href="index.html">Films</a></li>
+                <li><a href="index.html#nav-series">Séries</a></li>
+                <li><a href="index.html#nav-popular">Populaires</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="details-main">
+        <section id="movie-header" class="movie-header">
+        </section>
+
+        <section id="cast-section" class="cast-section" style="display:none;">
+            <h2>Casting</h2>
+            <div class="grid-container cast-grid" id="cast-results">
+            </div>
+        </section>
+    </main>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
